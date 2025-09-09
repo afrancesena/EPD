@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇪🇺 Pasaporte Digital de Producto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            line-height: 1.6;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { color: #fff; text-align: center; margin-bottom: 30px; }
+        h2 { color: #e3f2fd; border-bottom: 2px solid #e3f2fd; padding-bottom: 10px; }
+        .info-box {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .highlight { background: rgba(255,255,0,0.3); padding: 2px 5px; border-radius: 3px; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; }
+        .footer { text-align: center; margin-top: 30px; font-size: 0.9em; opacity: 0.8; }
+        .section { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇪🇺 PASAPORTE DIGITAL DE PRODUCTO</h1>
+        
+        <div class="section">
+            <h2>📋 INFORMACIÓN DEL ANÁLISIS</h2>
+            <div class="info-box">
+                <p><strong>🆔 ID DPP:</strong> <span class="highlight" id="dpp-id">DPP-MATERIAL-2024</span></p>
+                <p><strong>📅 Fecha:</strong> <span id="fecha"></span></p>
+                <p><strong>⚖️ Regulación:</strong> ESPR 2024/1781</p>
+                <p><strong>🏷️ Material:</strong> <span class="highlight" id="material">Material Analizado</span></p>
+                <p><strong>📄 Archivo EPD:</strong> <span id="archivo">Archivo-EPD.pdf</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌍 IMPACTOS AMBIENTALES</h2>
+            <ul>
+                <li><strong>🌡️ Huella de carbono:</strong> Calculada según EN 15804+A2 para <span id="material-impacto">el material</span></li>
+                <li><strong>🔋 Energía primaria:</strong> Renovable y no renovable específica</li>
+                <li><strong>💧 Uso de agua:</strong> Evaluado según ISO 14046</li>
+                <li><strong>🌿 Acidificación:</strong> Medido en SO₂ equivalente</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>♻️ CIRCULARIDAD</h2>
+            <ul>
+                <li><strong>📦 Contenido reciclado:</strong> Específico para <span id="material-circularidad">el material</span></li>
+                <li><strong>🔄 Reciclabilidad:</strong> Evaluada según propiedades del material</li>
+                <li><strong>⏱️ Durabilidad:</strong> Vida útil estimada para <span id="material-durabilidad">el material</span></li>
+                <li><strong>🛠️ Reparabilidad:</strong> Índice específico del material</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>✅ CUMPLIMIENTO NORMATIVO</h2>
+            <div class="info-box">
+                <p>✓ <strong>Marcado CE:</strong> Conforme para <span id="material-cumplimiento">el material</span></p>
+                <p>✓ <strong>REACH:</strong> Sustancias registradas</p>
+                <p>✓ <strong>Ecodiseño:</strong> Requisitos cumplidos</p>
+                <p>✓ <strong>Trazabilidad:</strong> Documentada desde el archivo EPD</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><em>Generado por Herramienta de Análisis EPD & DPP</em></p>
+            <p><strong>Material: <span id="material-footer">Material</span> | Fecha: <span id="fecha-footer"></span></strong></p>
+            <p><strong>Acceso desde código QR verificado ✅</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const material = urlParams.get('material') || 'Cemento';
+        const archivo = urlParams.get('archivo') || 'EPD-Cemento-Ejemplo.pdf';
+        
+        // Actualizar fecha
+        const fechaActual = new Date().toLocaleDateString('es-ES');
+        document.getElementById('fecha').textContent = fechaActual;
+        document.getElementById('fecha-footer').textContent = fechaActual;
+        
+        // Actualizar material en todos los lugares
+        document.getElementById('material').textContent = material;
+        document.getElementById('material-footer').textContent = material;
+        document.getElementById('material-impacto').textContent = material.toLowerCase();
+        document.getElementById('material-circularidad').textContent = material.toLowerCase();
+        document.getElementById('material-durabilidad').textContent = material.toLowerCase();
+        document.getElementById('material-cumplimiento').textContent = material.toLowerCase();
+        
+        // Actualizar ID DPP
+        document.getElementById('dpp-id').textContent = `DPP-${material.toUpperCase()}-${new Date().getFullYear()}`;
+        
+        // Actualizar archivo
+        document.getElementById('archivo').textContent = archivo;
+        
+        // Actualizar título de la página
+        document.title = `🇪🇺 Pasaporte Digital de Producto - ${material}`;
+    </script>
+</body>
+</html>
+
